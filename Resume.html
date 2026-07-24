@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yash | Resume</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    /* resume */
+    .btn{
+    display:inline-block;
+    padding:16px 38px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #ff0000,
+    #990000
+    );
+
+    color:white;
+    text-decoration:none;
+
+    border-radius:50px;
+
+    font-weight:600;
+    letter-spacing:1px;
+
+    transition:0.4s ease;
+
+    position:relative;
+    overflow:hidden;
+
+    box-shadow:
+    0 0 20px rgba(255,0,0,0.35),
+    0 0 50px rgba(255,0,0,0.15);
+}
+
+/* SHINE EFFECT */
+
+.btn::before{
+    content:'';
+
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:100%;
+    height:100%;
+
+    background:
+    linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.3),
+    transparent
+    );
+
+    transition:0.7s;
+}
+
+.btn:hover::before{
+    left:100%;
+}
+
+/* HOVER */
+
+.btn:hover{
+
+    background:white;
+    color:#ff0000;
+
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 0 30px rgba(255,0,0,0.6),
+    0 0 60px rgba(255,0,0,0.2);
+
+}
+/* resume end */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#000;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* ======================= */
+/* SPIDERMAN BACKGROUND */
+/* ======================= */
+
+body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at top right, rgba(255,0,0,0.28), transparent 30%),
+    radial-gradient(circle at bottom left, rgba(255,0,0,0.18), transparent 30%),
+    linear-gradient(135deg,#000,#0a0000,#000);
+    z-index:-2;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    inset:0;
+    background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size:60px 60px;
+    opacity:0.12;
+    z-index:-1;
+}
+
+/* ======================= */
+/* NAVBAR */
+/* ======================= */
+
+nav{
+    width:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(0,0,0,0.75);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,0,0,0.2);
+}
+
+.logo{
+    font-size:34px;
+    font-weight:800;
+    color:#ff0000;
+    text-shadow:0 0 20px red;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:35px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+    position:relative;
+}
+
+nav ul li a:hover{
+    color:#ff0000;
+}
+
+nav ul li a::after{
+    content:'';
+    position:absolute;
+    width:0%;
+    height:2px;
+    background:#ff0000;
+    left:0;
+    bottom:-5px;
+    transition:0.4s;
+}
+
+nav ul li a:hover::after{
+    width:100%;
+}
+
+/* ======================= */
+/* HERO */
+/* ======================= */
+
+.hero{
+    min-height:55vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    padding:160px 8% 80px;
+}
+
+.hero h3{
+    color:#ff0000;
+    letter-spacing:4px;
+    margin-bottom:20px;
+    animation:fadeUp 1s ease;
+}
+
+.hero h1{
+    font-size:75px;
+    font-weight:800;
+    margin-bottom:20px;
+    animation:fadeUp 1.2s ease;
+}
+
+.hero h1 span{
+    color:#ff0000;
+    text-shadow:
+    0 0 15px red,
+    0 0 40px red;
+}
+
+.hero p{
+    max-width:750px;
+    color:#ccc;
+    line-height:1.9;
+    animation:fadeUp 1.4s ease;
+}
+
+/* ======================= */
+/* RESUME SECTION */
+/* ======================= */
+
+.resume{
+    padding:60px 8% 120px;
+}
+
+.resume-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+}
+
+/* ======================= */
+/* BOX */
+/* ======================= */
+
+.resume-box{
+    background:rgba(15,15,15,0.95);
+    border:1px solid rgba(255,0,0,0.2);
+    border-radius:35px;
+    padding:45px;
+    position:relative;
+    overflow:hidden;
+    transition:0.5s;
+    animation:popup 1s ease forwards;
+    opacity:0;
+    transform:translateY(60px);
+}
+
+.resume-box:hover{
+    transform:translateY(-10px);
+    border-color:#ff0000;
+    box-shadow:
+    0 0 30px rgba(255,0,0,0.3),
+    0 0 60px rgba(255,0,0,0.12);
+}
+
+.resume-box::before{
+    content:'';
+    position:absolute;
+    width:400px;
+    height:400px;
+    background:red;
+    filter:blur(180px);
+    opacity:0.1;
+    top:-200px;
+    right:-100px;
+}
+
+.resume-box h2{
+    font-size:38px;
+    margin-bottom:35px;
+    color:#ff0000;
+    position:relative;
+    z-index:2;
+}
+
+/* ======================= */
+/* TIMELINE */
+/* ======================= */
+
+.timeline{
+    position:relative;
+    z-index:2;
+}
+
+.timeline-item{
+    position:relative;
+    padding-left:35px;
+    margin-bottom:40px;
+}
+
+.timeline-item::before{
+    content:'';
+    position:absolute;
+    left:0;
+    top:8px;
+    width:16px;
+    height:16px;
+    border-radius:50%;
+    background:#ff0000;
+    box-shadow:0 0 15px red;
+}
+
+.timeline-item::after{
+    content:'';
+    position:absolute;
+    left:7px;
+    top:24px;
+    width:2px;
+    height:100%;
+    background:rgba(255,0,0,0.3);
+}
+
+.timeline-item:last-child::after{
+    display:none;
+}
+
+.timeline-item h3{
+    font-size:24px;
+    margin-bottom:8px;
+    color:white;
+}
+
+.timeline-item span{
+    color:#ff0000;
+    font-size:14px;
+    display:block;
+    margin-bottom:12px;
+}
+
+.timeline-item p{
+    color:#ccc;
+    line-height:1.8;
+}
+
+/* ======================= */
+/* SKILLS */
+/* ======================= */
+
+.skills{
+    margin-top:40px;
+}
+
+.skill{
+    margin-bottom:25px;
+}
+
+.skill h4{
+    margin-bottom:10px;
+    font-weight:500;
+}
+
+.progress{
+    width:100%;
+    height:12px;
+    background:#111;
+    border-radius:30px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    background:linear-gradient(90deg,#ff0000,#ff4d4d);
+    border-radius:30px;
+    box-shadow:0 0 20px rgba(255,0,0,0.4);
+}
+
+/* ======================= */
+/* CONTACT */
+/* ======================= */
+
+.contact-box{
+    margin-top:50px;
+    background:rgba(10,10,10,0.9);
+    border:1px solid rgba(255,0,0,0.2);
+    border-radius:30px;
+    padding:40px;
+    text-align:center;
+}
+
+.contact-box h2{
+    color:#ff0000;
+    margin-bottom:20px;
+    font-size:40px;
+}
+
+.contact-box p{
+    color:#ccc;
+    line-height:1.8;
+    margin-bottom:20px;
+}
+
+.contact-info{
+    line-height:2.4;
+    font-size:18px;
+}
+
+.contact-info a{
+    color:#ff0000;
+    text-decoration:none;
+}
+
+/* ======================= */
+/* BUTTON */
+/* ======================= */
+
+.btn{
+    display:inline-block;
+    padding:16px 40px;
+    border-radius:50px;
+    background:#ff0000;
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.4s;
+    box-shadow:0 0 25px rgba(255,0,0,0.4);
+    margin-top:25px;
+}
+
+.btn:hover{
+    background:white;
+    color:#ff0000;
+    transform:translateY(-5px);
+}
+
+/* ======================= */
+/* FOOTER */
+/* ======================= */
+
+footer{
+    text-align:center;
+    padding:25px;
+    border-top:1px solid rgba(255,0,0,0.2);
+    color:#888;
+    background:black;
+}
+
+/* ======================= */
+/* ANIMATIONS */
+/* ======================= */
+
+@keyframes popup{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ======================= */
+/* RESPONSIVE */
+/* ======================= */
+
+@media(max-width:950px){
+
+    nav{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    nav ul{
+        gap:18px;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero h1{
+        font-size:50px;
+    }
+
+    .resume-container{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">YASH</div>
+
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="index.html#services">Services</a></li>
+<li><a href="index.html#portfolio">Portfolio</a></li>
+<li><a href="Graphic.html">Graphics</a></li>
+<li><a href="Resume.html">Resume</a></li>
+<li><a href="index.html#contact">Contact</a></li>
+</ul>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h3>PROFESSIONAL PROFILE</h3>
+
+<h1>
+MY <span>RESUME</span>
+</h1>
+
+<p>
+Creative Video Editor & Graphic Designer with experience
+in cinematic editing, commercial advertisements,
+motion graphics and luxury branding visuals.
+</p>
+
+</section>
+
+<!-- RESUME -->
+
+<section class="resume">
+
+<div class="resume-container">
+
+<!-- EDUCATION -->
+
+<div class="resume-box">
+
+<h2>Education</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+
+<h3>10th HBSC Board</h3>
+
+<span>2019 • 99.5%</span>
+
+<p>
+Completed 10th education with outstanding academic performance
+under HBSC Board scoring 99.5%.
+</p>
+
+</div>
+
+<div class="timeline-item">
+
+<h3>Government Polytechnic Sirsa</h3>
+
+<span>2021 - 2024 • Computer Diploma</span>
+
+<p>
+Completed 3 Years Diploma in Computer Engineering
+from Government Polytechnic Sirsa with technical knowledge
+in computer systems, software and creative technologies.
+</p>
+
+</div>
+
+</div>
+
+<!-- SKILLS -->
+
+<div class="skills">
+
+<div class="skill">
+
+<h4>Video Editing</h4>
+
+<div class="progress">
+<div class="progress-bar" style="width:95%;"></div>
+</div>
+
+</div>
+
+<div class="skill">
+
+<h4>Graphic Designing</h4>
+
+<div class="progress">
+<div class="progress-bar" style="width:90%;"></div>
+</div>
+
+</div>
+
+<div class="skill">
+
+<h4>Motion Graphics</h4>
+
+<div class="progress">
+<div class="progress-bar" style="width:85%;"></div>
+</div>
+
+</div>
+
+<div class="skill">
+
+<h4>Music Video Editing</h4>
+
+<div class="progress">
+<div class="progress-bar" style="width:88%;"></div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- EXPERIENCE -->
+
+<div class="resume-box">
+
+<h2>Experience</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+
+<h3>Skyline Immigration</h3>
+
+<span>1 Year • Graphic Designer</span>
+
+<p>
+Worked as a professional Graphic Designer creating
+social media creatives, branding materials,
+advertisement posters and promotional designs.
+</p>
+
+</div>
+
+<div class="timeline-item">
+
+<h3>Dwardham</h3>
+
+<span>6 Months • Graphic Designer & Video Editor</span>
+
+<p>
+Worked on creative graphic designing,
+social media content and professional video editing projects.
+</p>
+
+</div>
+
+<div class="timeline-item">
+
+<h3>Yakuza Electric Vehicle</h3>
+
+<span>6 Months • Video Editor</span>
+
+<p>
+Worked on commercial advertisements,
+electric vehicle promotions, cinematic edits
+and music video editing projects.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CONTACT -->
+
+<div class="contact-box">
+
+<h2>Contact Information</h2>
+
+<p>
+Available for Video Editing, Graphic Designing,
+Commercial Ads and Creative Projects.
+</p>
+
+<div class="contact-info">
+
+<p>
+📞 Mobile :
+<a href="tel:8683047537">
+8683047537
+</a>
+</p>
+
+<p>
+📧 Email :
+<a href="mailto:yashbamnia0@gmail.com">
+yashbamnia0@gmail.com
+</a>
+</p>
+
+</div>
+
+<a href="Yash_Bamnia_CV.pdf" target="_blank" class="btn">
+    View Resume
+</a>
+<a href="Yash_Bamnia_CV.pdf" download="Yash_Bamnia_CV.pdf" class="btn">
+    Download Resume
+</a>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+© 2026 Yash | Video Editor & Graphic Designer
+</footer>
+
+</body>
+</html>

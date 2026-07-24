@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yash | Portfolio</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #000;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* ======================= */
+        /* SPIDERMAN BACKGROUND */
+        /* ======================= */
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(circle at top right, rgba(255, 0, 0, 0.25), transparent 30%),
+                radial-gradient(circle at bottom left, rgba(255, 0, 0, 0.18), transparent 30%),
+                linear-gradient(135deg, #000, #0a0000, #000);
+            z-index: -2;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+            opacity: 0.12;
+            z-index: -1;
+        }
+
+        /* ======================= */
+        /* NAVBAR */
+        /* ======================= */
+
+        nav {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 0, 0, 0.2);
+        }
+
+        .logo {
+            font-size: 34px;
+            font-weight: 800;
+            color: #ff0000;
+            text-shadow: 0 0 20px red;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: #ff0000;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            background: #ff0000;
+            left: 0;
+            bottom: -5px;
+            transition: 0.4s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* ======================= */
+        /* HERO */
+        /* ======================= */
+
+        .hero {
+            min-height: 55vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 160px 8% 80px;
+        }
+
+        .hero h3 {
+            color: #ff0000;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            animation: fadeUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 75px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            animation: fadeUp 1.2s ease;
+        }
+
+        .hero h1 span {
+            color: #ff0000;
+            text-shadow:
+                0 0 15px red,
+                0 0 40px red;
+        }
+
+        .hero p {
+            max-width: 750px;
+            color: #ccc;
+            line-height: 1.9;
+            animation: fadeUp 1.4s ease;
+        }
+
+        /* ======================= */
+        /* PORTFOLIO SECTION */
+        /* ======================= */
+
+        .portfolio {
+            padding: 60px 8% 120px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title h2 {
+            font-size: 55px;
+            color: #ff0000;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+        }
+
+        .section-title p {
+            color: #bbb;
+        }
+
+        /* ======================= */
+        /* FILTER BUTTONS */
+        /* ======================= */
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .filter-btn {
+            padding: 12px 28px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            background: #111;
+            color: white;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #ff0000;
+            color: white;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+        }
+
+        /* ======================= */
+        /* VIDEO GRID */
+        /* ======================= */
+
+        .video-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(320px, 1fr));
+
+            gap: 35px;
+        }
+
+        /* ====================================== */
+        /* VIDEO CARD */
+        /* ====================================== */
+
+        .video-card {
+
+            background: rgba(15, 15, 15, 0.95);
+
+            border: 1px solid rgba(255, 0, 0, 0.2);
+
+            border-radius: 28px;
+
+            overflow: hidden;
+
+            transition: 0.5s ease;
+
+            position: relative;
+
+            box-shadow:
+                0 0 25px rgba(255, 0, 0, 0.08);
+        }
+
+        /* HOVER */
+
+        .video-card:hover {
+
+            transform: translateY(-12px);
+
+            border-color: #ff0000;
+
+            box-shadow:
+                0 0 35px rgba(255, 0, 0, 0.35),
+                0 0 70px rgba(255, 0, 0, 0.15);
+        }
+
+        /* ====================================== */
+        /* VIDEO BOX */
+        /* ====================================== */
+
+        .video-thumb {
+
+            position: relative;
+
+            width: 100%;
+
+            height: 260px;
+
+            overflow: hidden;
+
+            background: #000;
+        }
+
+        /* VIDEO */
+
+        .portfolio-video {
+
+            width: 100%;
+
+            height: 100%;
+
+            border: none;
+
+            object-fit: cover;
+
+            transition: 0.6s ease;
+
+            pointer-events: none;
+
+            transform: scale(1.2);
+        }
+
+        /* VIDEO HOVER */
+
+        .video-card:hover .portfolio-video {
+
+            transform: scale(1.28);
+        }
+
+        /* ====================================== */
+        /* DARK OVERLAY */
+        /* ====================================== */
+
+        .video-overlay {
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(to top,
+                    rgba(0, 0, 0, 0.75),
+                    rgba(0, 0, 0, 0.15));
+
+            pointer-events: none;
+        }
+
+        /* ====================================== */
+        /* CONTENT */
+        /* ====================================== */
+
+        .video-content {
+
+            padding: 30px;
+        }
+
+        .video-content h3 {
+
+            font-size: 28px;
+
+            color: #ff0000;
+
+            margin-bottom: 15px;
+        }
+
+        .video-content p {
+
+            color: #ccc;
+
+            line-height: 1.8;
+
+            margin-bottom: 22px;
+        }
+
+        /* ====================================== */
+        /* TAGS */
+        /* ====================================== */
+
+        .tags {
+
+            display: flex;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+        }
+
+        .tags span {
+
+            padding: 8px 15px;
+
+            background: #111;
+
+            border: 1px solid rgba(255, 0, 0, 0.15);
+
+            border-radius: 30px;
+
+            font-size: 13px;
+
+            color: #ddd;
+        }
+
+        /* ====================================== */
+        /* RESPONSIVE */
+        /* ====================================== */
+
+        @media(max-width:768px) {
+
+            .video-thumb {
+
+                height: 220px;
+            }
+
+        }
+
+        @media(max-width:480px) {
+
+            .video-thumb {
+
+                height: 200px;
+            }
+
+            .video-content {
+
+                padding: 22px;
+            }
+
+            .video-content h3 {
+
+                font-size: 22px;
+            }
+
+        }
+
+        /* ======================= */
+        /* VIDEO CARD */
+        /* ======================= */
+
+        .video-card {
+            background: rgba(15, 15, 15, 0.95);
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            border-radius: 30px;
+            overflow: hidden;
+            transition: 0.5s;
+            position: relative;
+            animation: popup 1s ease forwards;
+            opacity: 0;
+            transform: translateY(60px);
+        }
+
+        .video-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .video-card:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .video-card:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        .video-card:nth-child(5) {
+            animation-delay: 0.8s;
+        }
+
+        .video-card:nth-child(6) {
+            animation-delay: 1s;
+        }
+
+        .video-card:hover {
+            transform: translateY(-12px);
+            border-color: #ff0000;
+            box-shadow:
+                0 0 30px rgba(255, 0, 0, 0.35),
+                0 0 60px rgba(255, 0, 0, 0.15);
+        }
+
+        /* ======================= */
+        /* VIDEO IMAGE */
+        /* ======================= */
+
+        .video-thumb {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-thumb img {
+            width: 100%;
+            display: block;
+            transition: 0.5s;
+        }
+
+        .video-card:hover .video-thumb img {
+            transform: scale(1.1);
+        }
+
+        /* PLAY BUTTON */
+
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 0, 0, 0.85);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            color: white;
+            transition: 0.4s;
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
+        }
+
+        .video-card:hover .play-btn {
+            transform: translate(-50%, -50%) scale(1.15);
+        }
+
+        /* ======================= */
+        /* VIDEO CONTENT */
+        /* ======================= */
+
+        .video-content {
+            padding: 30px;
+        }
+
+        .video-content h3 {
+            font-size: 26px;
+            margin-bottom: 15px;
+            color: #ff0000;
+        }
+
+        .video-content p {
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tags span {
+            padding: 8px 15px;
+            background: #111;
+            border: 1px solid rgba(255, 0, 0, 0.15);
+            border-radius: 30px;
+            font-size: 13px;
+            color: #ddd;
+        }
+
+        /* ======================= */
+        /* STATS SECTION */
+        /* ======================= */
+
+        .stats {
+            padding: 100px 8%;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-box {
+            background: rgba(15, 15, 15, 0.95);
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            border-radius: 30px;
+            padding: 50px 30px;
+            text-align: center;
+            transition: 0.4s;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-10px);
+            border-color: #ff0000;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+        }
+
+        .stat-box h2 {
+            font-size: 55px;
+            color: #ff0000;
+            margin-bottom: 10px;
+        }
+
+        .stat-box p {
+            color: #ccc;
+        }
+
+        /* ======================= */
+        /* CTA */
+        /* ======================= */
+
+        .cta {
+            padding: 100px 8%;
+            text-align: center;
+        }
+
+        .cta-box {
+            background: rgba(10, 10, 10, 0.95);
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            border-radius: 35px;
+            padding: 70px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: red;
+            filter: blur(180px);
+            opacity: 0.12;
+            top: -200px;
+            right: -100px;
+        }
+
+        .cta h2 {
+            font-size: 55px;
+            color: #ff0000;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta p {
+            color: #ccc;
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.9;
+            margin-bottom: 35px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            border-radius: 50px;
+            background: #ff0000;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.4s;
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn:hover {
+            background: white;
+            color: #ff0000;
+            transform: translateY(-5px);
+        }
+
+        /* ======================= */
+        /* FOOTER */
+        /* ======================= */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            border-top: 1px solid rgba(255, 0, 0, 0.2);
+            color: #888;
+            background: black;
+        }
+
+        /* ======================= */
+        /* ANIMATIONS */
+        /* ======================= */
+
+        @keyframes popup {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ======================= */
+        /* RESPONSIVE */
+        /* ======================= */
+
+        @media(max-width:950px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 18px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 50px;
+            }
+
+            .section-title h2,
+            .cta h2 {
+                font-size: 40px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">YASH</div>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Services.html">Services</a></li>
+            <li><a href="Portfolio.html">Portfolio</a></li>
+            <li><a href="Graphic.html">Graphics</a></li>
+            <li><a href="Resume.html">Resume</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h3>CREATIVE SHOWCASE</h3>
+
+        <h1>
+            MY <span>PORTFOLIO</span>
+        </h1>
+
+        <p>
+            Explore my latest cinematic edits, luxury brand advertisements,
+            motion graphics, creative visual storytelling and premium content projects.
+        </p>
+
+    </section>
+
+    <!-- PORTFOLIO -->
+
+    <section class="portfolio">
+
+        <div class="section-title">
+
+            <h2>Featured Works</h2>
+
+            <p>
+                Professional Video Editing & Graphic Designing Projects
+            </p>
+
+        </div>
+
+        <!-- FILTERS -->
+
+        <div class="filters">
+
+            <button class="filter-btn active">All</button>
+
+            <button class="filter-btn">Commercial Ads</button>
+
+            <button class="filter-btn">Reels</button>
+
+            <button class="filter-btn">Motion Graphics</button>
+
+            <button class="filter-btn">Graphic Design</button>
+
+        </div>
+
+        <!-- VIDEO GRID -->
+
+        <section class="portfolio">
+
+            <div class="section-title">
+
+                <h2>Featured Works</h2>
+
+                <p>
+                    Professional Video Editing & Motion Graphics Projects
+                </p>
+
+            </div>
+
+            <!-- VIDEO GRID -->
+
+            <div class="video-grid">
+
+                <!-- VIDEO CARD 1 -->
+
+                <div class="video-card">
+
+                    <div class="video-thumb">
+
+                        <iframe style="width: 100%; height: 100%;"
+                            src="https://www.youtube.com/embed/y8gXy4GJwnk?si=1coROpRXDNX2EMY1"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <div class="video-overlay"></div>
+
+                    </div>
+
+                    <div class="video-content">
+
+                        <h3>Podcast Editing</h3>
+
+                        <p>
+                            Luxury Professional Podcast Editing
+                            with cinematic transitions and storytelling.
+                        </p>
+
+                        <div class="tags">
+
+                            <span>Premiere Pro</span>
+                            <span>Podcast</span>
+                            <span>Cinematic</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- VIDEO CARD 2 -->
+
+                <div class="video-card">
+
+                    <div class="video-thumb">
+
+                        <iframe style="width: 100%; height: 100%;"
+                            src="https://www.youtube.com/embed/gUbcWPZzmkI?si=pxcC2mHAIc71FNXo"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                        <div class="video-overlay"></div>
+
+                    </div>
+
+                    <div class="video-content">
+
+                        <h3>Motion Graphics Edit</h3>
+
+                        <p>
+                            Creative animation and visual effects
+                            with modern transitions and premium style.
+                        </p>
+
+                        <div class="tags">
+
+                            <span>After Effects</span>
+                            <span>VFX</span>
+                            <span>Compositing</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- VIDEO CARD 3 -->
+
+                <div class="video-card">
+
+                    <div class="video-thumb">
+
+                        <iframe style="width: 100%; height: 100%;"
+                            src="https://www.youtube.com/embed/YPIuIPKak6Y?si=Q93_EDmuFTq4zKHy"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                        <div class="video-overlay"></div>
+
+                    </div>
+
+                    <div class="video-content">
+
+                        <h3>Creative Branding Reel</h3>
+
+                        <p>
+                            Youtube branding Video with
+                            luxury visuals and cinematic editing.
+                        </p>
+
+                        <div class="tags">
+
+                            <span>Branding</span>
+                            <span>Youtube</span>
+                            <span>Video</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- VIDEO CARD 4 -->
+
+                <div class="video-card">
+
+                    <div class="video-thumb">
+
+                        <iframe style="width: 100%; height: 100%;"
+                            src="https://www.youtube.com/embed/cnILbHFps6s?si=AKxm6T5wsW4KqT3i"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                        <div class="video-overlay"></div>
+
+                    </div>
+
+                    <div class="video-content">
+
+                        <h3>Music Video Editing</h3>
+
+                        <p>
+                            High-energy music video editing
+                            with advanced cinematic cuts.
+                        </p>
+
+                        <div class="tags">
+
+                            <span>Music Video</span>
+                            <span>Transitions</span>
+                            <span>Editing</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- STATS -->
+
+        <section class="stats">
+
+            <div class="stats-grid">
+
+                <div class="stat-box">
+
+                    <h2>150+</h2>
+
+                    <p>
+                        Projects Completed
+                    </p>
+
+                </div>
+
+                <div class="stat-box">
+
+                    <h2>80+</h2>
+
+                    <p>
+                        Happy Clients
+                    </p>
+
+                </div>
+
+                <div class="stat-box">
+
+                    <h2>2+</h2>
+
+                    <p>
+                        Years Experience
+                    </p>
+
+                </div>
+
+                <div class="stat-box">
+
+                    <h2>24/7</h2>
+
+                    <p>
+                        Creative Support
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- CTA -->
+
+        <section class="cta">
+
+            <div class="cta-box">
+
+                <h2>Let's Create Something Amazing</h2>
+
+                <p>
+                    Available for Video Editing,
+                    Graphic Designing, Commercial Advertisements,
+                    Motion Graphics and Creative Projects.
+                </p>
+
+                <a href="mailto:yashbamnia0@gmail.com" class="btn">
+                    Hire Me Now
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- FOOTER -->
+
+        <footer>
+            © 2026 Yash | Video Editor & Graphic Designer
+        </footer>
+
+</body>
+
+</html>

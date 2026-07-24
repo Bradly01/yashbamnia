@@ -1,0 +1,626 @@
+now make service page also in same theme, this is old one - <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yash | Services</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #000;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* ========================= */
+        /* SPIDERMAN BACKGROUND */
+        /* ========================= */
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(circle at top right, rgba(255, 0, 0, 0.25), transparent 30%),
+                radial-gradient(circle at bottom left, rgba(255, 0, 0, 0.2), transparent 30%),
+                linear-gradient(135deg, #000, #0a0000, #000);
+            z-index: -2;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+            opacity: 0.12;
+            z-index: -1;
+        }
+
+        /* ========================= */
+        /* NAVBAR */
+        /* ========================= */
+
+        nav {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 0, 0, 0.2);
+        }
+
+        .logo {
+            color: #ff0000;
+            font-size: 34px;
+            font-weight: 800;
+            text-shadow: 0 0 20px red;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: #ff0000;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            background: #ff0000;
+            left: 0;
+            bottom: -5px;
+            transition: 0.4s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* ========================= */
+        /* HERO */
+        /* ========================= */
+
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+            padding: 150px 8% 80px;
+        }
+
+        .hero h3 {
+            color: #ff0000;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            animation: fadeUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 75px;
+            line-height: 1.1;
+            font-weight: 800;
+            margin-bottom: 20px;
+            animation: fadeUp 1.2s ease;
+        }
+
+        .hero h1 span {
+            color: #ff0000;
+            text-shadow:
+                0 0 15px red,
+                0 0 40px red;
+        }
+
+        .hero p {
+            max-width: 800px;
+            color: #ccc;
+            line-height: 1.9;
+            animation: fadeUp 1.4s ease;
+        }
+
+        /* ========================= */
+        /* SERVICES SECTION */
+        /* ========================= */
+
+        .services {
+            padding: 60px 8% 120px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+
+        /* ========================= */
+        /* SERVICE CARD */
+        /* ========================= */
+
+        .service-card {
+            background: rgba(15, 15, 15, 0.95);
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            border-radius: 30px;
+            padding: 45px 35px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.5s;
+            animation: popup 1s ease forwards;
+            opacity: 0;
+            transform: translateY(80px);
+        }
+
+        .service-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .service-card:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .service-card:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        .service-card:nth-child(5) {
+            animation-delay: 0.8s;
+        }
+
+        .service-card:nth-child(6) {
+            animation-delay: 1s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            border-color: #ff0000;
+            box-shadow:
+                0 0 30px rgba(255, 0, 0, 0.35),
+                0 0 60px rgba(255, 0, 0, 0.15);
+        }
+
+        /* Glow Animation */
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg,
+                    transparent,
+                    rgba(255, 0, 0, 0.18),
+                    transparent);
+            top: -50%;
+            left: -150%;
+            transform: rotate(25deg);
+            transition: 1s;
+        }
+
+        .service-card:hover::before {
+            left: 120%;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 0, 0, 0.12);
+            border: 2px solid rgba(255, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            font-size: 35px;
+            margin-bottom: 25px;
+            color: #ff0000;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.15);
+        }
+
+        .service-card h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #ff0000;
+        }
+
+        .service-card p {
+            color: #cfcfcf;
+            line-height: 1.9;
+            margin-bottom: 25px;
+        }
+
+        .service-list {
+            list-style: none;
+        }
+
+        .service-list li {
+            margin-bottom: 12px;
+            color: #ddd;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .service-list li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            color: #ff0000;
+        }
+
+        /* ========================= */
+        /* CTA SECTION */
+        /* ========================= */
+
+        .cta {
+            padding: 100px 8%;
+            text-align: center;
+        }
+
+        .cta-box {
+            background: rgba(10, 10, 10, 0.95);
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            border-radius: 35px;
+            padding: 70px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: red;
+            filter: blur(180px);
+            opacity: 0.12;
+            top: -200px;
+            right: -100px;
+        }
+
+        .cta h2 {
+            font-size: 55px;
+            margin-bottom: 20px;
+            color: #ff0000;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta p {
+            max-width: 700px;
+            margin: auto;
+            color: #ccc;
+            line-height: 1.9;
+            margin-bottom: 35px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            border-radius: 50px;
+            background: #ff0000;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.4s;
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn:hover {
+            background: white;
+            color: #ff0000;
+            transform: translateY(-5px);
+        }
+
+        /* ========================= */
+        /* FOOTER */
+        /* ========================= */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            border-top: 1px solid rgba(255, 0, 0, 0.2);
+            color: #888;
+            background: black;
+        }
+
+        /* ========================= */
+        /* ANIMATIONS */
+        /* ========================= */
+
+        @keyframes popup {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ========================= */
+        /* RESPONSIVE */
+        /* ========================= */
+
+        @media(max-width:900px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 18px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .cta h2 {
+                font-size: 38px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="logo">YASH</div>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Services.html">Services</a></li>
+            <li><a href="Portfolio.html">Portfolio</a></li>
+            <li><a href="Graphic.html">Graphics</a></li>
+            <li><a href="Resume.html">Resume</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h3>PREMIUM CREATIVE SERVICES</h3>
+
+        <h1>
+            MY <span>SERVICES</span>
+        </h1>
+
+        <p>
+            Professional Video Editing & Graphic Designing solutions
+            with cinematic visuals, modern motion graphics,
+            luxury branding and commercial creative storytelling.
+        </p>
+
+    </section>
+
+    <!-- SERVICES -->
+
+    <section class="services">
+
+        <div class="services-grid">
+
+            <!-- CARD 1 -->
+
+            <div class="service-card">
+
+                <div class="service-icon">🎬</div>
+
+                <h2>Video Editing</h2>
+
+                <p>
+                    Professional cinematic editing with smooth storytelling
+                    and premium commercial visuals.
+                </p>
+
+                <ul class="service-list">
+                    <li>Cinematic Editing</li>
+                    <li>YouTube Videos</li>
+                    <li>Commercial Ads</li>
+                    <li>Reels & Shorts</li>
+                    <li>Color Grading</li>
+                </ul>
+
+            </div>
+
+            <!-- CARD 2 -->
+
+            <div class="service-card">
+
+                <div class="service-icon">🎨</div>
+
+                <h2>Graphic Designing</h2>
+
+                <p>
+                    Luxury creative designs for brands,
+                    social media and modern advertisements.
+                </p>
+
+                <ul class="service-list">
+                    <li>Poster Design</li>
+                    <li>Social Media Creatives</li>
+                    <li>Brand Identity</li>
+                    <li>Thumbnail Design</li>
+                    <li>Banner Design</li>
+                </ul>
+
+            </div>
+
+            <!-- CARD 3 -->
+
+            <div class="service-card">
+
+                <div class="service-icon">✨</div>
+
+                <h2>Motion Graphics</h2>
+
+                <p>
+                    Advanced motion graphics and modern animation
+                    with smooth transitions and effects.
+                </p>
+
+                <ul class="service-list">
+                    <li>Logo Animation</li>
+                    <li>Text Animation</li>
+                    <li>2D Motion Graphics</li>
+                    <li>Promo Animation</li>
+                    <li>Transitions</li>
+                </ul>
+
+            </div>
+
+            <!-- CARD 4 -->
+
+            <div class="service-card">
+
+                <div class="service-icon">🔥</div>
+
+                <h2>VFX Editing</h2>
+
+                <p>
+                    Professional visual effects and cinematic enhancements
+                    for premium content production.
+                </p>
+
+                <ul class="service-list">
+                    <li>Visual Effects</li>
+                    <li>Green Screen</li>
+                    <li>Tracking</li>
+                    <li>Compositing</li>
+                    <li>CG Effects</li>
+                </ul>
+
+            </div>
+
+            <!-- CARD 5 -->
+
+            <div class="service-card">
+
+                <div class="service-icon">🚀</div>
+
+                <h2>Social Media Ads</h2>
+
+                <p>
+                    High-converting social media advertisements
+                    for brands and business promotions.
+                </p>
+
+                <ul class="service-list">
+                    <li>Instagram Ads</li>
+                    <li>Facebook Ads</li>
+                    <li>Product Promotions</li>
+                    <li>Luxury Brand Ads</li>
+                    <li>Short Form Content</li>
+                </ul>
+
+            </div>
+
+            <!-- CARD 6 -->
+
+            <div class="service-card">
+
+                <div class="service-icon">⚡</div>
+
+                <h2>Creative Branding</h2>
+
+                <p>
+                    Premium visual branding for modern businesses
+                    with luxury design concepts.
+                </p>
+
+                <ul class="service-list">
+                    <li>Brand Identity</li>
+                    <li>Creative Direction</li>
+                    <li>Luxury Branding</li>
+                    <li>Campaign Design</li>
+                    <li>Creative Concepts</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CTA -->
+
+    <section class="cta">
+
+        <div class="cta-box">
+
+            <h2>Let's Create Something Amazing</h2>
+
+            <p>
+                Available for Video Editing, Graphic Designing,
+                Commercial Advertisements, Motion Graphics,
+                Brand Promotions and Creative Projects.
+            </p>
+
+            <a href="Contact.html" class="btn">
+                Hire Me Now
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+        © 2026 Yash | Creative Video Editor & Graphic Designer
+    </footer>
+
+</body>
+
+</html>

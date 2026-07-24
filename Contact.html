@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yash | Contact</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#000;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* ========================= */
+/* SPIDERMAN BACKGROUND */
+/* ========================= */
+
+body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at top right, rgba(255,0,0,0.28), transparent 30%),
+    radial-gradient(circle at bottom left, rgba(255,0,0,0.18), transparent 30%),
+    linear-gradient(135deg,#000,#0a0000,#000);
+    z-index:-2;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    inset:0;
+    background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size:60px 60px;
+    opacity:0.12;
+    z-index:-1;
+}
+
+/* ========================= */
+/* NAVBAR */
+/* ========================= */
+
+nav{
+    width:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(0,0,0,0.75);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,0,0,0.2);
+}
+
+.logo{
+    font-size:34px;
+    font-weight:800;
+    color:#ff0000;
+    text-shadow:0 0 20px red;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:35px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+    position:relative;
+}
+
+nav ul li a:hover{
+    color:#ff0000;
+}
+
+nav ul li a::after{
+    content:'';
+    position:absolute;
+    width:0%;
+    height:2px;
+    background:#ff0000;
+    left:0;
+    bottom:-5px;
+    transition:0.4s;
+}
+
+nav ul li a:hover::after{
+    width:100%;
+}
+
+/* ========================= */
+/* HERO */
+/* ========================= */
+
+.hero{
+    min-height:55vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    padding:160px 8% 80px;
+}
+
+.hero h3{
+    color:#ff0000;
+    letter-spacing:4px;
+    margin-bottom:20px;
+    animation:fadeUp 1s ease;
+}
+
+.hero h1{
+    font-size:75px;
+    font-weight:800;
+    margin-bottom:20px;
+    animation:fadeUp 1.2s ease;
+}
+
+.hero h1 span{
+    color:#ff0000;
+    text-shadow:
+    0 0 15px red,
+    0 0 40px red;
+}
+
+.hero p{
+    max-width:700px;
+    color:#ccc;
+    line-height:1.9;
+    animation:fadeUp 1.4s ease;
+}
+
+/* ========================= */
+/* CONTACT SECTION */
+/* ========================= */
+
+.contact-section{
+    padding:60px 8% 120px;
+}
+
+.contact-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+}
+
+/* ========================= */
+/* CONTACT INFO */
+/* ========================= */
+
+.contact-info{
+    background:rgba(15,15,15,0.95);
+    border:1px solid rgba(255,0,0,0.2);
+    border-radius:35px;
+    padding:50px;
+    position:relative;
+    overflow:hidden;
+    animation:popup 1s ease forwards;
+}
+
+.contact-info::before{
+    content:'';
+    position:absolute;
+    width:400px;
+    height:400px;
+    background:red;
+    filter:blur(180px);
+    opacity:0.15;
+    top:-150px;
+    right:-100px;
+}
+
+.contact-info h2{
+    font-size:42px;
+    color:#ff0000;
+    margin-bottom:20px;
+    position:relative;
+    z-index:2;
+}
+
+.contact-info p{
+    color:#ccc;
+    line-height:1.9;
+    margin-bottom:30px;
+    position:relative;
+    z-index:2;
+}
+
+.info-box{
+    margin-bottom:25px;
+    position:relative;
+    z-index:2;
+}
+
+.info-box h3{
+    color:#ff0000;
+    margin-bottom:10px;
+    font-size:22px;
+}
+
+.info-box a{
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.info-box a:hover{
+    color:#ff0000;
+}
+
+/* ========================= */
+/* CONTACT FORM */
+/* ========================= */
+
+.contact-form{
+    background:rgba(15,15,15,0.95);
+    border:1px solid rgba(255,0,0,0.2);
+    border-radius:35px;
+    padding:50px;
+    animation:popup 1.2s ease forwards;
+}
+
+.contact-form h2{
+    font-size:42px;
+    color:#ff0000;
+    margin-bottom:25px;
+}
+
+.input-box{
+    margin-bottom:20px;
+}
+
+.input-box input,
+.input-box textarea{
+    width:100%;
+    padding:16px 20px;
+    border:none;
+    outline:none;
+    border-radius:15px;
+    background:#111;
+    color:white;
+    border:1px solid rgba(255,0,0,0.1);
+    transition:0.3s;
+}
+
+.input-box input:focus,
+.input-box textarea:focus{
+    border-color:#ff0000;
+    box-shadow:0 0 20px rgba(255,0,0,0.2);
+}
+
+.input-box textarea{
+    height:150px;
+    resize:none;
+}
+
+.btn{
+    display:inline-block;
+    padding:16px 40px;
+    border:none;
+    border-radius:50px;
+    background:#ff0000;
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.4s;
+    box-shadow:0 0 25px rgba(255,0,0,0.4);
+}
+
+.btn:hover{
+    background:white;
+    color:#ff0000;
+    transform:translateY(-5px);
+}
+
+/* ========================= */
+/* SOCIAL */
+/* ========================= */
+
+.socials{
+    margin-top:30px;
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    position:relative;
+    z-index:2;
+}
+
+.socials a{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    background:#111;
+    border:1px solid rgba(255,0,0,0.2);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#ff0000;
+    font-size:22px;
+    text-decoration:none;
+    transition:0.4s;
+}
+
+.socials a:hover{
+    background:#ff0000;
+    color:white;
+    transform:translateY(-5px);
+    box-shadow:0 0 20px rgba(255,0,0,0.4);
+}
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+
+footer{
+    text-align:center;
+    padding:25px;
+    border-top:1px solid rgba(255,0,0,0.2);
+    color:#888;
+    background:black;
+}
+
+/* ========================= */
+/* ANIMATIONS */
+/* ========================= */
+
+@keyframes popup{
+    from{
+        opacity:0;
+        transform:translateY(60px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
+
+@media(max-width:950px){
+
+    nav{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    nav ul{
+        gap:18px;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero h1{
+        font-size:50px;
+    }
+
+    .contact-container{
+        grid-template-columns:1fr;
+    }
+
+    .contact-info,
+    .contact-form{
+        padding:35px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">YASH</div>
+
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="Services.html">Services</a></li>
+<li><a href="Portfolio.html">Portfolio</a></li>
+<li><a href="Graphic.html">Graphics</a></li>
+<li><a href="Resume.html">Resume</a></li>
+<li><a href="Contact.html">Contact</a></li>
+</ul>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h3>LET'S CONNECT</h3>
+
+<h1>
+CONTACT <span>ME</span>
+</h1>
+
+<p>
+Available for Video Editing, Graphic Designing,
+Commercial Ads, Motion Graphics and Creative Projects.
+</p>
+
+</section>
+
+<!-- CONTACT SECTION -->
+
+<section class="contact-section">
+
+<div class="contact-container">
+
+<!-- CONTACT INFO -->
+
+<div class="contact-info">
+
+<h2>Get In Touch</h2>
+
+<p>
+Feel free to contact me for creative collaborations,
+professional editing projects and brand promotions.
+</p>
+
+<div class="info-box">
+<h3>📞 Mobile Number</h3>
+
+<a href="tel:918683047537">
+91+ 86830-47537
+</a>
+</div>
+
+<div class="info-box">
+<h3>📧 Email Address</h3>
+
+<a href="mailto:yashbamnia0@gmail.com">
+yashbamnia0@gmail.com
+</a>
+</div>
+
+<div class="info-box">
+<h3>🎬 Profession</h3>
+
+<p>
+Video Editor & Graphic Designer
+</p>
+</div>
+
+<!-- SOCIAL ICONS -->
+
+<div class="socials">
+
+<a href="#">📷</a>
+<a href="#">▶</a>
+<a href="#">🎨</a>
+<a href="#">🔥</a>
+
+</div>
+
+</div>
+
+<!-- CONTACT FORM -->
+
+<div class="contact-form">
+
+<h2>Send Message</h2>
+
+<form>
+
+<div class="input-box">
+<input type="text" placeholder="Your Name">
+</div>
+
+<div class="input-box">
+<input type="email" placeholder="Your Email">
+</div>
+
+<div class="input-box">
+<input type="text" placeholder="Subject">
+</div>
+
+<div class="input-box">
+<textarea placeholder="Write Your Message"></textarea>
+</div>
+
+<button type="submit" class="btn">
+Send Message
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+© 2026 Yash | Video Editor & Graphic Designer
+</footer>
+
+</body>
+</html>
